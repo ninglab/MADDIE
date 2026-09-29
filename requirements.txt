@@ -1,0 +1,11 @@
+# Orchestrator-level dependencies (cli.py, orchestrator/).
+# Each agent has its own requirements file and is expected to run in a
+# separate environment — see README.md.
+anthropic
+openai
+pandas
+PyTDC
+rdkit
+rich
+tiktoken
+watchdog

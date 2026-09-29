@@ -1,0 +1,32 @@
+.venv
+*.pyc
+**/__pycache__
+*.egg-info
+*.out
+*.err
+**/.ipynb_checkpoints/*
+.codex
+.env
+.sif
+synthesizer/data/*.txt
+__pycache__/
+*.pyc
+*.pdbqt
+dataset/pdbs/docking_cache/
+cache/*
+test_env/*
+test_ltm/*
+test_envs/*
+# base_env/*
+# base_ltm/*
+log/*
+logs/*
+runs/*
+env/
+ltm/
+.claude/*
+# /*.sh
+hit_identifier/conDitar-dev/
+# tests/*
+results/*
+baselines/*

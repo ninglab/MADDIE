@@ -1,0 +1,25 @@
+# Python 3.10 recommended
+# conda create -n maddie-eval python=3.10
+# conda activate maddie-eval
+# pip install -r requirements.txt
+
+# ── Cheminformatics core ────────────────────────────────────────
+rdkit>=2024.3.0               # molecular structure, QED, SAScore, filters
+
+# ── Molecular filters ──────────────────────────────────────────
+medchem>=2.0.5                # Lilly MedChem Rules (datamol)
+
+# ── ADMET prediction ───────────────────────────────────────────
+admet-ai>=1.4.0               # hERG, DILI, ClinTox, Mutagenicity, Carcinogens
+torch>=2.0.0                  # backend for admet-ai (GPU optional)
+
+# ── Docking ────────────────────────────────────────────────────
+vina>=1.2.7                   # AutoDock Vina Python API
+meeko>=0.7.1                  # SMILES → PDBQT ligand preparation
+
+# ── EvaluatorAgent (optional, needs API credits) ───────────────
+openai>=1.0.0                 # OpenAI API client
+
+# ── General utilities ──────────────────────────────────────────
+numpy>=1.24.0
+pandas>=2.0.0

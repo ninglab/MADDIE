@@ -1,0 +1,43 @@
+# =============================================================================
+# conDitar is copyrighted by the Ohio State University and covered by US 64/023,113. 
+#
+# conDitar may be licensed solely for educational and research purposes by non-profit institutions and US government agencies only. 
+#
+# For other proposed uses, contact tlcip@osu.edu. 
+#
+# The software may not be sold or redistributed without prior approval. 
+#
+# You may not use the software to train or process or input the software into or make it accessible to: automated software, services or tools, including, but not limited to, artificial intelligence solutions, algorithms, machine learning, large language models, robots, spiders, crawlers, search engines, text or data mining or any other aggregation functionality.   
+#
+# One may make copies of the software for their use provided that the copies, are not sold or distributed, are used under the same terms and conditions. As unestablished research software, this code is provided on an "as is'' basis without warranty of any kind, either expressed or implied. The downloading, or executing any part of this software constitutes an implicit agreement to these terms. 
+#
+# These terms and conditions are subject to change at any time without prior notice.
+# =============================================================================
+
+data:
+  hydrogen: False
+  transform: False
+
+pocket:
+  embedding_dim: 32
+  hidden_size: 128
+  output_size: 128
+  point_dim: 3
+  pocket_layer_num: 3
+  layer_num: 3
+  num_k: 16
+  num_k_residue: 8
+  loss_type_weight: 0.5
+  noise : 1.
+  noise_type: uniform
+  residue_center: mean
+
+model:
+  checkpoint_pocket: /path/to/conditar/checkpoints/PocketAE.pt
+  checkpoint: /path/to/conditar/checkpoints/Diff.pt 
+
+sample:
+  seed: 2026
+  num_steps: 1000
+  center_pos_mode: none
+  sample_num_atoms: pocket

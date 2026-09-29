@@ -1,0 +1,19 @@
+# Install these after activating the GeLLMO-compatible environment:
+#
+#   python -m pip install --no-deps -r requirements-lead-optimizer-all.no-deps.txt
+#
+# PyTDC 0.4.1 pulls dependency versions that can break the GeLLMO GPU stack if
+# installed normally. Keep this file no-deps unless the full environment is
+# being rebuilt and revalidated.
+
+PyTDC==0.4.1
+fuzzywuzzy==0.18.0
+setuptools==69.5.1
+gpytorch==1.10
+botorch==0.8.5
+linear-operator==0.4.0
+pyro-ppl==1.8.6
+pyro-api==0.1.2
+nltk==3.8.1
+multipledispatch==1.0.0
+opt-einsum==3.3.0

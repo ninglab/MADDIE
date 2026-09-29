@@ -1,0 +1,23 @@
+site_name: PrexSyn Documentation
+repo_url: https://github.com/luost26/prexsyn
+theme:
+  name: material
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - toc.follow
+    - content.code.copy
+markdown_extensions:
+  - pymdownx.blocks.caption
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences
+  - attr_list
+  - footnotes
+plugins:
+  - search
+  - awesome-nav

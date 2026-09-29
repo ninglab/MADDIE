@@ -1,0 +1,42 @@
+note:
+  version: 1
+  name: Test config
+
+chemical_space:
+  cache_path: data/chemical_spaces/enamine-test-small_rxn115.chemspace
+  bb_path: data/building_blocks/enamine-test-small.sdf
+  rxn_path: data/reactions/rxn115.txt
+  building_block_selectivity_cutoff: 2
+
+descriptors:
+  - type: ecfp4
+    num_embedding_tokens: 4
+  - type: fcfp4
+    num_embedding_tokens: 4
+
+featurizer:
+  max_length: 16
+
+model:
+  dim: 512
+  nhead: 16
+  dim_feedforward: 1024
+  num_layers: 6
+  bb_embed_dim: 512
+
+training:
+  batch_size: 512
+  val_freq: 1000
+  seed: 2026
+  data_pipeline_num_cpus: 15
+  val_seed: 2026
+  num_val_batches: 10
+  loss_weights:
+    token_types: 1.0
+    bb_indices: 1.0
+    rxn_indices: 1.0
+  optimizer:
+    lr: 3.e-4
+  scheduler:
+    T_max: 500
+    eta_min: 1.e-5

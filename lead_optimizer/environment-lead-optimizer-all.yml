@@ -1,0 +1,43 @@
+# Reference environment for the combined Lead Optimizer runtime.
+#
+# The safest path is still:
+#
+#   conda env create -f environment-lead-optimizer-all.yml -p /path/to/envs/maddie-lead-optimizer
+#   conda activate /path/to/envs/maddie-lead-optimizer
+#   python -m pip install --no-deps -r requirements-lead-optimizer-all.no-deps.txt
+#   export MADDIE_EVALUATOR_ROOT=/path/to/MADDIE-or-testing-root
+#   PYTHONPATH=. python lead_optimizer/example.py --list-capabilities
+#
+# Do not install PyTDC with dependencies unless these GPU/LLM pins are
+# protected.
+
+name: maddie-lead-optimizer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - setuptools=69.5.1
+  - six
+  - numpy<2
+  - pandas
+  - rdkit
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu124
+      - torch==2.5.1+cu124
+      - triton==3.1.0
+      - transformers==4.46.3
+      - huggingface-hub==0.26.3
+      - bitsandbytes==0.45.0
+      - peft
+      - openai
+      - PyTDC==0.4.1
+      - fuzzywuzzy==0.18.0
+      - gpytorch==1.10
+      - botorch==0.8.5
+      - linear-operator==0.4.0
+      - pyro-ppl==1.8.6
+      - pyro-api==0.1.2
+      - nltk==3.8.1
+      - multipledispatch==1.0.0
+      - opt-einsum==3.3.0

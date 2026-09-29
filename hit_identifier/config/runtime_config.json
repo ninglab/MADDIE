@@ -1,0 +1,42 @@
+{
+  "global": {
+    "tmp_root": "/path/to/tmp",
+    "lbdd": {
+      "python_bin": "/path/to/envs/diffsmol/bin/python",
+      "config": "vendor/diffsmol/config/DiffSMol_pocket0.5.yml",
+      "runner_script": "runners/sample_lbdd.py",
+      "sample_size": 100
+    },
+    "sbdd": {
+      "python_bin": "/path/to/envs/diffsmol/bin/python",
+      "config": "vendor/conditar/configs/sample.yml",
+      "runner_script": "runners/sample_sbdd.py",
+      "sample_size": 100
+    },
+    "virtual_screen": {
+      "enabled": true,
+      "backend": "boltz2",
+      "python_bin": "/path/to/envs/boltz/bin/python",
+      "runner_script": "runners/virtual_screen_boltz2.py",
+      "cache_root": "/path/to/scratch/cache",
+      "sample_size": 1,
+      "top_k": 1,
+      "accelerator": "gpu",
+      "devices": 1,
+      "use_msa_server": false,
+      "use_potentials": true,
+      "template_force": true,
+      "template_threshold": 0.5
+    },
+    "docking": {
+      "scoring_mode": "vina_score",
+      "gpu": {
+        "path_to_tool": "/path/to/Vina-CUDA/QuickVina2-CUDA",
+        "path_to_tool_environment": "/path/to/envs/vina-cuda",
+        "binary": "QuickVina2-GPU-2-1-CUDA",
+        "thread": 8192,
+        "box_size": 20
+      }
+    }
+  }
+}

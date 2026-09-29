@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthesizer"
+version = "0.1.0"
+description = "LLM-assisted synthesis planning toolkit."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.0.0",
+    "rdkit>=2025.3.1",
+    "flask>=3.1.3"
+]
+
+[tool.setuptools]
+packages = [
+    "synthesizer",
+    "synthesizer.agent",
+    "synthesizer.data",
+    "synthesizer.llm",
+    "synthesizer.tools",
+    "synthesizer.tools.MEEA",
+    "synthesizer.tools.PrexSyn",
+    "synthesizer.tests",
+]
+
+
+[tool.setuptools.package-dir]
+# Keep a flat on-disk layout while publishing everything under the
+# synthesizer.* import namespace.
+synthesizer = "."
+"synthesizer.agent" = "agent"
+"synthesizer.data" = "data"
+"synthesizer.llm" = "llm"
+"synthesizer.tools" = "tools"
+"synthesizer.tools.MEEA" = "tools/MEEA"
+"synthesizer.tools.PrexSyn" = "tools/PrexSyn"
+"synthesizer.tests" = "tests"

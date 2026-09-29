@@ -1,0 +1,66 @@
+Bootstrap: docker
+From: python:3.11-slim
+
+%labels
+    Author frazierbaker
+    Application PrexSyn
+    Description Apptainer image for installing and smoke-testing the local PrexSyn checkout
+
+%help
+    Build:
+        apptainer build prexsyn.sif prexsyn.def
+
+    Smoke test:
+        apptainer run prexsyn.sif
+
+    Interactive use:
+        apptainer exec prexsyn.sif python -m pytest -q
+
+%environment
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    export PYTHONUNBUFFERED=1
+    export PIP_NO_CACHE_DIR=1
+    export PATH=/opt/venv/bin:$PATH
+    export VIRTUAL_ENV=/opt/venv
+    export PREXSYN_HOME=/opt/prexsyn
+
+%post
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        graphviz \
+        libglib2.0-0 \
+        libxext6 \
+        libxrender1
+    rm -rf /var/lib/apt/lists/*
+
+    python -m venv /opt/venv
+    . /opt/venv/bin/activate
+    python -m pip install --upgrade pip setuptools wheel
+
+    cd /opt/prexsyn
+    python -m pip install -e '.[dev]'
+    python -c "import prexsyn, prexsyn_engine; print(prexsyn.__version__)"
+    python scripts/create_chemspace.py configs/enamine-test-small_rxn115.yml
+
+%files
+    . /opt/prexsyn
+
+%runscript
+    cd /opt/prexsyn
+    . /opt/venv/bin/activate
+    if [ "$#" -gt 0 ]; then
+        exec "$@"
+    fi
+    python -c "import prexsyn, prexsyn_engine; print('PrexSyn import test passed')"
+
+%test
+    cd /opt/prexsyn
+    . /opt/venv/bin/activate
+    python -c "import prexsyn, prexsyn_engine"
+    test -f data/chemical_spaces/enamine-test-small_rxn115.chemspace
