@@ -1,5 +1,7 @@
 # MADDIE: Multi-Agent Drug Discovery Engine
 
+[![arXiv](https://img.shields.io/badge/arXiv-2610.16975-b31b1b.svg)](https://arxiv.org/abs/2610.16975)
+
 Given a target protein and a set of desired molecular properties, MADDIE
 searches *in silico* for molecules that bind the target, satisfy every
 property, and can be synthesized. It comprises a central agent, Orchestrator,
@@ -150,6 +152,25 @@ One task per target, same settings as above, at most ten at a time.
 ```bash
 sbatch tests/run_full.sh              # all 50 targets
 sbatch --array=20 tests/run_full.sh   # one target
+```
+
+---
+
+## Citation
+
+Y. Liu, R. Averly, A. Meyer, F. N. Baker, R. Gao, D. Adu-Ampratwum, X. Ning.
+*MADDIE: Multi-Agent Drug Discovery Engine.* arXiv:2610.16975, 2026.
+
+```bibtex
+@misc{liu2026maddie,
+      title={{MADDIE}: Multi-Agent Drug Discovery Engine},
+      author={Ye Liu and Reza Averly and Avery Meyer and Frazier N. Baker and Ruoxi Gao and Daniel Adu-Ampratwum and Xia Ning},
+      year={2026},
+      eprint={2610.16975},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2610.16975},
+}
 ```
 
 ---
